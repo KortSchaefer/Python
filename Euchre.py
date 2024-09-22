@@ -1,6 +1,6 @@
 import random
 import time
-'''test'''
+
 #Card values aka. tier of card
 card_values ={
   
@@ -668,7 +668,7 @@ elif 'hearts' in opp_draw and trump is card_values_spades:
 
 
 
-
+'''Needs fixed'''
 
 print('\nYour opponent draws a '+opp_draw)
 time.sleep(1)
