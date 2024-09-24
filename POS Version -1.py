@@ -9,12 +9,13 @@ root.configure(bg="lightblue")
 
 
 
+
 ### |  |  |  |
 ### |xx|  |  |
 ### |  |  |  |
 orderFrame = LabelFrame(root, text="Order Box", width=100, height=300, relief='raised', bg='white')
 orderFrame.grid_propagate(False)
-orderFrame.grid(column=0, row=1, padx=(15, 2), pady=2, sticky=NSEW)
+orderFrame.grid(column=0, row=1, padx=(15, 2), pady=2)
 orderBox= Label(orderFrame, text='Box').pack()
 
 
@@ -34,9 +35,6 @@ scrollFrame.grid_propagate(False)
 scrollFrame.grid(column=1, row=1, padx=2, pady=2,)
 orderBox= Label(scrollFrame, text='Box').pack()
 
-### Scroll box buttons
-upArrow=Button(scrollFrame, text="up").pack()
-
 
 ### |  |  |  |
 ### |  |  |  |
@@ -52,5 +50,25 @@ orderBox= Label(bottomFrame, text='Box').pack()
 topFrame = LabelFrame(root, text="Top Box", width=430, height=20, relief='raised',)
 topFrame.grid(column=0, row=0, padx=2, pady=2,columnspan=4)
 orderBox= Label(topFrame, text='Box').pack()
+
+### Button Creation
+some_label = Label(orderFrame, text='Simple Text')
+some_button = Button(topFrame, text='Quit', command=root.destroy)
+
+
+### Frame anchoring
+for frame in [entryFrame, scrollFrame, topFrame, bottomFrame, orderFrame]:
+    # sticky='nswe' acts like fill='both'
+    frame.grid(sticky='nswe')
+    frame.rowconfigure(0, weight=1)
+    frame.columnconfigure(0, weight=1)
+    frame.grid_propagate(0)
+
+for widget in [some_label, some_button]:
+    # sticky='wse' acts like fill='x' + anchor='s'
+    widget.grid(sticky='wse')
+
+root.rowconfigure(0, weight=1)
+root.columnconfigure(0, weight=1)
 
 root.mainloop()
