@@ -46,7 +46,7 @@ orderBox= Label(entryFrame, text='Box').pack()
 ### |  |  |  |
 ### |  |xx|  |
 ### |  |  |  |
-scrollFrame = LabelFrame(root, text="Scroll Box", width=40, height=300, relief='raised',)
+scrollFrame = LabelFrame(root, text="Scroll Box", width=40, pady=300, relief='raised',)
 scrollFrame.grid_propagate(False)
 scrollFrame.grid(column=1, row=1, padx=2, pady=2,)
 orderBox= Label(scrollFrame, text='Box').pack()
@@ -69,25 +69,28 @@ orderBox= Label(topFrame, text='Box').pack()
 
 ### Button Creation
 buttonData = [
-    {"": "", "": scroll1}
-    {"": "", "": scroll2}
-    {"": "", "": scroll3}
-    {"": "", "": scroll4}
-    {"": "", "": scroll5}
+    {"name": "Soft Drinks", "command": scroll1},
+    {"name": "Tea & Special", "command": scroll2},
+    {"name": "Apps", "command": scroll3},
+    {"name": "Apps\nas meal", "command": scroll4},
+    {"name": "Side\nsalads", "command": scroll5}
 ]
+
+for i, button_info in enumerate(buttonData):
+    button = Button(scrollFrame, text=button_info["name"], command=button_info["command"])
+    button.grid(row=i, column=0, padx=5, pady=5)
+
 
 
 ### Frame anchoring
 for frame in [entryFrame, scrollFrame, topFrame, bottomFrame, orderFrame]:
     # sticky='nswe' acts like fill='both'
-    frame.grid(sticky='nswe')
+    frame.grid(sticky='NSWE')
     frame.rowconfigure(0, weight=1)
     frame.columnconfigure(0, weight=1)
     frame.grid_propagate(0)
 
-for widget in [some_label, exitButton, some_button]:
-    # sticky='wse' acts like fill='x' + anchor='s'
-    widget.grid(sticky='wse')
+
 
 root.rowconfigure(0, weight=1)
 root.columnconfigure(0, weight=1)
