@@ -6,8 +6,24 @@ root.title("POS System")
 root.iconbitmap(r"C:\Users\Kingc\Documents\Code\Python\Practice Images\code.ico")
 root.configure(bg="lightblue")
 
+###
+###   Definition space
+###
 
+def scroll1():
+    print("Button 1 pressed!")
 
+def scroll2():
+    print("Button 2 pressed!")
+
+def scroll3():
+    print("Button 3 pressed!")
+
+def scroll4():
+    print("Button 4 pressed!")
+
+def scroll5():
+    print("Button 5 pressed!")
 
 
 ### |  |  |  |
@@ -52,8 +68,13 @@ topFrame.grid(column=0, row=0, padx=2, pady=2,columnspan=4)
 orderBox= Label(topFrame, text='Box').pack()
 
 ### Button Creation
-some_label = Label(orderFrame, text='Simple Text')
-some_button = Button(topFrame, text='Quit', command=root.destroy)
+buttonData = [
+    {"": "", "": scroll1}
+    {"": "", "": scroll2}
+    {"": "", "": scroll3}
+    {"": "", "": scroll4}
+    {"": "", "": scroll5}
+]
 
 
 ### Frame anchoring
@@ -64,7 +85,7 @@ for frame in [entryFrame, scrollFrame, topFrame, bottomFrame, orderFrame]:
     frame.columnconfigure(0, weight=1)
     frame.grid_propagate(0)
 
-for widget in [some_label, some_button]:
+for widget in [some_label, exitButton, some_button]:
     # sticky='wse' acts like fill='x' + anchor='s'
     widget.grid(sticky='wse')
 
