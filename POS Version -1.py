@@ -5,7 +5,15 @@ root = Tk()
 root.title("POS System")
 root.iconbitmap(r"C:\Users\Kingc\Documents\Code\Python\Practice Images\code.ico")
 root.configure(bg="lightblue")
-root.geometry('800x800')
+
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
+root.geometry(f"{screen_width}x{screen_height}+0+0")
+root.attributes('-fullscreen', True)
+
+# Bind the ESC key to exit fullscreen
+root.bind("<Escape>", lambda event: root.attributes('-fullscreen', False))
+
 
 ###
 ###   Definition space
@@ -30,7 +38,7 @@ def scroll5():
 ### |  |  |  |
 ### |xx|  |  |
 ### |  |  |  |
-orderFrame = LabelFrame(root, text="Order Box", width=100, height=300, relief='raised', bg='white')
+orderFrame = LabelFrame(root, text="Order Box", relief='raised', bg='white')
 orderFrame.grid_propagate(False)
 orderFrame.grid(column=0, row=1, padx=(15, 2), pady=2)
 orderBox= Label(orderFrame, text='Box').pack()
@@ -39,7 +47,7 @@ orderBox= Label(orderFrame, text='Box').pack()
 ### |  |  |  |
 ### |  |  |xx|
 ### |  |  |  |
-entryFrame = LabelFrame(root, text="Entry Box", width=250, height=300, relief='raised',)
+entryFrame = LabelFrame(root, text="Entry Box", relief='raised',)
 entryFrame.grid(column=2, row=1, padx=(2,15), pady=2)
 orderBox= Label(entryFrame, text='Box').pack()
 
@@ -47,16 +55,16 @@ orderBox= Label(entryFrame, text='Box').pack()
 ### |  |  |  |
 ### |  |xx|  |
 ### |  |  |  |
-scrollFrame = LabelFrame(root, text="Scroll Box", width=40, pady=300, relief='raised',)
+scrollFrame = LabelFrame(root, text="Scroll Box", relief='raised',)
 scrollFrame.grid_propagate(False)
 scrollFrame.grid(column=1, row=1, padx=2, pady=2,)
-orderBox= Label(scrollFrame, text='Box').pack()
+
 
 
 ### |  |  |  |
 ### |  |  |  |
 ### |xx|xx|xx|
-bottomFrame = LabelFrame(root, text="Bottom Box", width=430, height=20, relief='raised',)
+bottomFrame = LabelFrame(root, text="Bottom Box", relief='raised',)
 bottomFrame.grid(column=0, row=3, padx=2, pady=2, columnspan=3)
 orderBox= Label(bottomFrame, text='Box').pack()
 
@@ -64,7 +72,7 @@ orderBox= Label(bottomFrame, text='Box').pack()
 ### |xx|xx|xx|
 ### |  |  |  |
 ### |  |  |  |
-topFrame = LabelFrame(root, text="Top Box", width=430, height=20, relief='raised',)
+topFrame = LabelFrame(root, text="Top Box", relief='raised',)
 topFrame.grid(column=0, row=0, padx=2, pady=2,columnspan=4)
 orderBox= Label(topFrame, text='Box').pack()
 
@@ -79,7 +87,7 @@ buttonData = [
 
 for i, button_info in enumerate(buttonData):
     button = Button(scrollFrame, text=button_info["name"], command=button_info["command"])
-    button.grid(row=i, column=0, padx=5, pady=5)
+    button.grid(row=i, column=0, padx=5, pady=5, sticky='WEN')
 
 
 
@@ -87,13 +95,18 @@ for i, button_info in enumerate(buttonData):
 for frame in [entryFrame, scrollFrame, topFrame, bottomFrame, orderFrame]:
     # sticky='nswe' acts like fill='both'
     frame.grid(sticky='NSWE')
-    frame.rowconfigure(0, weight=1)
-    frame.columnconfigure(0, weight=1)
     frame.grid_propagate(0)
-
-
+    
 
 root.rowconfigure(0, weight=1)
-root.columnconfigure(0, weight=1)
+root.columnconfigure(0, weight=5)
+
+root.rowconfigure(1, weight=12)
+root.columnconfigure(1, weight=1)
+
+root.rowconfigure(2, weight=1)
+root.columnconfigure(2, weight=12)
+
+
 
 root.mainloop()
