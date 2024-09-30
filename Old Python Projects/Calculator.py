@@ -1,5 +1,7 @@
 from tkinter import *
-
+'''It workerd'''
+'''Part 2'''
+'''Part 3'''
 root = Tk()
 root.title("Calculator")
 
