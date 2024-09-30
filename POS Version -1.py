@@ -5,6 +5,7 @@ root = Tk()
 root.title("POS System")
 root.iconbitmap(r"C:\Users\Kingc\Documents\Code\Python\Practice Images\code.ico")
 root.configure(bg="lightblue")
+root.geometry('800x800')
 
 ###
 ###   Definition space
