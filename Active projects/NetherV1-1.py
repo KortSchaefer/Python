@@ -7,19 +7,23 @@ root.geometry("500x300")
 
 ###Functions
 ###Overworld to nether def
+count = 0
+
 def button1():
+    global count
     x1 = xover.get()
     y1 = yover.get()
     nam = name.get()
     x2=float(x1)/8
     y2=float(y1)/8
     document= Label(root, text=str(nam+"   Overworld  X: "+str(x1)+" Z: "+str(y1)+"     Nether  X: "+str(x2)+" Z: "+str(y2)))
-    document.grid(row=4,column=0,columnspan=6, padx=10, pady=10)
+    document.grid(row=count+4,column=0,columnspan=6, padx=10, pady=10)
+    count+=1
     
 
 ###Frames
 entryFrame = LabelFrame(root, text="test", padx=5, pady=5)
-entryFrame.pack(padx=10, pady=10)
+entryFrame.grid(column=0, row=0, padx=10, pady=10)
 ###Labels
 label1= Label(root, text="Only enter 1 set of coords")
 label1.grid(row=0,column=0,columnspan=3)
