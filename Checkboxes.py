@@ -6,9 +6,16 @@ root.title("Image Practice")
 root.iconbitmap(r"C:\Users\Kingc\Documents\Code\Python\Practice Images\code.ico")
 root.geometry('400x400')
 
-var = IntVar()
+def show():
+    lbl = Label(root, text=var.get()).pack()
 
-c = Checkbutton(root, text='Check this box', variable=var)
+
+var = StringVar()
+
+c = Checkbutton(root, text='Check this box', variable=var, onvalue="On", offvalue="Off")
+c.deselect()
 c.pack()
+
+btn = Button(root, text="Show Selecrion", command=show).pack()
 
 root.mainloop()
