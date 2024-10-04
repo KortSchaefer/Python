@@ -15,6 +15,8 @@ root.attributes('-fullscreen', True)
 root.bind("<Escape>", lambda event: root.attributes('-fullscreen', False))
 
 
+fontSize = int(screen_width/160)
+
 ###
 ###   Definition space
 ###
@@ -88,16 +90,29 @@ orderBox= Label(entryFrame, text='Box').pack()
 scrollFrame = LabelFrame(root, text="Scroll Box", relief='raised',)
 scrollFrame.grid_propagate(False)
 scrollFrame.grid(column=1, row=1, padx=2, pady=2,)
+scrollFrame.grid_columnconfigure(0, weight=1)
 
 
 
 ### |  |  |  |
 ### |  |  |  | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ### |xx|xx|xx|
+bottomLeftFrame = LabelFrame(root, text="Bottom Box", relief='raised',)
+bottomLeftFrame.grid(column=0, row=2, padx=2, pady=2,)
+bottomBox= Label(bottomLeftFrame, text='Box')
+bottomBox.grid(column=0, row=0)
+
 bottomFrame = LabelFrame(root, text="Bottom Box", relief='raised',)
-bottomFrame.grid(column=0, row=2, padx=2, pady=2, columnspan=3)
+bottomFrame.grid(column=1, row=2, padx=2, pady=2,)
 bottomBox= Label(bottomFrame, text='Box')
 bottomBox.grid(column=0, row=0)
+
+bottomRightFrame = LabelFrame(root, text="Bottom Box", relief='raised',)
+bottomRightFrame.grid(column=2, row=2, padx=2, pady=2,)
+bottomBox= Label(bottomRightFrame, text='Box')
+bottomBox.grid(column=0, row=0)
+
+
 
 ### Button Creation
 
@@ -108,7 +123,7 @@ buttonDataBottomLeft = [
 ]
 
 for i, button_info in enumerate(buttonDataBottomLeft):
-    button = Button(bottomFrame, text=button_info["name"], command=button_info["command"])
+    button = Button(bottomLeftFrame, text=button_info["name"], command=button_info["command"], font=("Arial", fontSize), padx=20, pady=5)
     button.grid(row=0, column=i, padx=5, pady=5, sticky="W")
 
 
@@ -128,7 +143,7 @@ buttonDataBottomRight = [
 ]
 
 for i, button_info in enumerate(buttonDataBottomRight):
-    button = Button(bottomFrame, text=button_info["name"], command=button_info["command"])
+    button = Button(bottomRightFrame, text=button_info["name"], command=button_info["command"], font=("Arial", fontSize), padx=20, pady=5)
     button.grid(row=0, column=abs(i-12), padx=5, pady=5, sticky='WEN')
 
 
@@ -148,27 +163,28 @@ buttonData = [
     {"name": "Side\nsalads", "command": scroll5}
 ]
 
+
 for i, button_info in enumerate(buttonData):
-    button = Button(scrollFrame, text=button_info["name"], command=button_info["command"])
+    button = Button(scrollFrame, text=button_info["name"], command=button_info["command"], font=("Arial", fontSize))
     button.grid(row=i, column=0, padx=5, pady=5, sticky='WEN')
 
 
 
 ### Frame anchoring -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-for frame in [entryFrame, scrollFrame, topFrame, bottomFrame, orderFrame]:
+for frame in [entryFrame, scrollFrame, topFrame, bottomFrame, orderFrame, bottomLeftFrame, bottomRightFrame]:
     # sticky='nswe' acts like fill='both'
     frame.grid(sticky='NSWE')
     frame.grid_propagate(0)
     
 
-root.rowconfigure(0, weight=1)
-root.columnconfigure(0, weight=5)
+root.rowconfigure(0, weight=2)
+root.columnconfigure(0, weight=10)
 
-root.rowconfigure(1, weight=12)
-root.columnconfigure(1, weight=1)
+root.rowconfigure(1, weight=24)
+root.columnconfigure(1, weight=3)
 
-root.rowconfigure(2, weight=1)
-root.columnconfigure(2, weight=12)
+root.rowconfigure(2, weight=2)
+root.columnconfigure(2, weight=24)
 
 
 
