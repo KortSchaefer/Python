@@ -103,17 +103,18 @@ bottomBox.grid(column=0, row=0)
 
 buttonDataBottomLeft = [
     {"name": "Close", "command": close},
-    {"name": "Next Seat", "command": nextSeat},
+    {"name": "Next Seat", "command": nextSeat}
+    
 ]
 
 for i, button_info in enumerate(buttonDataBottomLeft):
     button = Button(bottomFrame, text=button_info["name"], command=button_info["command"])
-    button.grid(row=0, column=i, padx=5, pady=5, sticky='WEN')
+    button.grid(row=0, column=i, padx=5, pady=5, sticky="W")
 
 
 #divider
 dividerLabel = Label(bottomBox, text="  s  ", padx=200)
-dividerLabel.grid(column=4, row=0)
+dividerLabel.grid(column=2, row=0)
 
 
 buttonDataBottomRight = [
