@@ -16,24 +16,74 @@ root.bind("<Escape>", lambda event: root.attributes('-fullscreen', False))
 
 
 fontSize = int(screen_width/160)
+orderCostTotal = 0
 
 ###
 ###   Definition space
 ###
 
-def scroll1():
-    print("Button 1 pressed!")
+#def hide_all_buttons():
+#    for widget in frame.winfo_children():  # Loop through all children in the frame
+#        widget.grid_forget()  
+            
 
-def scroll2():
+
+def softDrinks():
+    global orderCostTotal
+    global fontSize
+    global orderFrame
+    global entryFrame
+    global softDrinks
+    global coke
+    global cokeButton
+    global mrPib
+    global mrPibButton
+    global sprite
+    global spriteButton
+    global dietCoke
+    global dietCokeButton
+
+    
+    # all of the soft drink buttons
+    
+
+    def coke():
+        global orderCostTotal
+        Label(orderFrame, text="Coke").grid(row=0, column=0)
+        Label(orderFrame, text="3.49").grid(row=0, column=2)
+        orderCostTotal += 3.49
+    def dietCoke():
+        global orderCostTotal
+        Label(orderFrame, text="dietCoke").grid(row=0, column=0)
+        Label(orderFrame, text="3.49").grid(row=0, column=2)
+        orderCostTotal += 3.49
+    def sprite():
+        global orderCostTotal
+        Label(orderFrame, text="sprite").grid(row=0, column=0)
+        Label(orderFrame, text="3.49").grid(row=0, column=2)
+        orderCostTotal += 3.49
+    def mrPib():
+        global orderCostTotal
+        Label(orderFrame, text="mrPib").grid(row=0, column=0)
+        Label(orderFrame, text="3.49").grid(row=0, column=2)
+        orderCostTotal += 3.49
+    cokeButton = Button(entryFrame, text="Coke", command=coke, padx=fontSize, pady=fontSize).grid(row=0, column=0, padx=fontSize, pady=fontSize)
+    dietCokeButton = Button(entryFrame, text="Diet Coke", command=dietCoke, padx=fontSize, pady=fontSize).grid(row=0, column=1, padx=fontSize, pady=fontSize)
+    spriteButton = Button(entryFrame, text="Sprite", command=sprite, padx=fontSize, pady=fontSize).grid(row=0, column=2, padx=fontSize, pady=fontSize)
+    mrPibButton = Button(entryFrame, text="Mr. Pib", command=mrPib, padx=fontSize, pady=fontSize).grid(row=0, column=3, padx=fontSize, pady=fontSize)
+    
+
+
+def teaSpecial():
     print("Button 2 pressed!")
 
-def scroll3():
+def apps():
     print("Button 3 pressed!")
 
-def scroll4():
+def appsMeal():
     print("Button 4 pressed!")
 
-def scroll5():
+def sideSalads():
     print("Button 5 pressed!")
 
 
@@ -59,7 +109,7 @@ def delete():
 
 def rapidFire():
     print('Get check')
-
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def close():
     print('close')
 
@@ -75,14 +125,12 @@ orderFrame.grid_propagate(False)
 orderFrame.grid(column=0, row=1, padx=(15, 2), pady=2)
 orderBox= Label(orderFrame, text='Box').pack()
 
-
 ### |  |  |  |
 ### |  |  |xx| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ### |  |  |  |
 entryFrame = LabelFrame(root, text="Entry Box", relief='raised',)
 entryFrame.grid(column=2, row=1, padx=(2,15), pady=2)
 orderBox= Label(entryFrame, text='Box').pack()
-
 
 ### |  |  |  |
 ### |  |xx|  | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -92,7 +140,12 @@ scrollFrame.grid_propagate(False)
 scrollFrame.grid(column=1, row=1, padx=2, pady=2,)
 scrollFrame.grid_columnconfigure(0, weight=1)
 
-
+### |xx|xx|xx|
+### |  |  |  | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### |  |  |  |
+topFrame = LabelFrame(root, text="Top Box", relief='raised',)
+topFrame.grid(column=0, row=0, padx=2, pady=2,columnspan=4)
+orderBox= Label(topFrame, text='Box').pack()
 
 ### |  |  |  |
 ### |  |  |  | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -114,7 +167,7 @@ bottomBox.grid(column=0, row=0)
 
 
 
-### Button Creation
+### Button Creation bottom left-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 buttonDataBottomLeft = [
     {"name": "Close", "command": close},
@@ -126,10 +179,8 @@ for i, button_info in enumerate(buttonDataBottomLeft):
     button = Button(bottomLeftFrame, text=button_info["name"], command=button_info["command"], font=("Arial", fontSize), padx=20, pady=5)
     button.grid(row=0, column=i, padx=5, pady=5, sticky="W")
 
+### Button Creation bottom right -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#divider
-dividerLabel = Label(bottomBox, text="  s  ", padx=200)
-dividerLabel.grid(column=2, row=0)
 
 
 buttonDataBottomRight = [
@@ -144,23 +195,18 @@ buttonDataBottomRight = [
 
 for i, button_info in enumerate(buttonDataBottomRight):
     button = Button(bottomRightFrame, text=button_info["name"], command=button_info["command"], font=("Arial", fontSize), padx=20, pady=5)
-    button.grid(row=0, column=abs(i-12), padx=5, pady=5, sticky='WEN')
+    button.grid(row=0, column=abs(i-12), padx=5, pady=5, sticky='EN')
 
 
-### |xx|xx|xx|
-### |  |  |  | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-### |  |  |  |
-topFrame = LabelFrame(root, text="Top Box", relief='raised',)
-topFrame.grid(column=0, row=0, padx=2, pady=2,columnspan=4)
-orderBox= Label(topFrame, text='Box').pack()
 
-### Button Creation
+
+### Buttons for scrollFrame -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 buttonData = [
-    {"name": "Soft Drinks", "command": scroll1},
-    {"name": "Tea & Special", "command": scroll2},
-    {"name": "Apps", "command": scroll3},
-    {"name": "Apps\nas meal", "command": scroll4},
-    {"name": "Side\nsalads", "command": scroll5}
+    {"name": "Soft Drinks", "command": softDrinks},
+    {"name": "Tea & Special", "command": teaSpecial},
+    {"name": "Apps", "command": apps},
+    {"name": "Apps\nas meal", "command": appsMeal},
+    {"name": "Side\nsalads", "command": sideSalads},
 ]
 
 
@@ -177,6 +223,8 @@ for frame in [entryFrame, scrollFrame, topFrame, bottomFrame, orderFrame, bottom
     frame.grid_propagate(0)
     
 
+
+# Set row and column configuration for each frame ------------------------------------------------------------------------------------------------------------------------------------------------------------
 root.rowconfigure(0, weight=2)
 root.columnconfigure(0, weight=10)
 
