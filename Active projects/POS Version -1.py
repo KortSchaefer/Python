@@ -33,16 +33,6 @@ def softDrinks():
     global fontSize
     global orderFrame
     global entryFrame
-    global softDrinks
-    global coke
-    global cokeButton
-    global mrPib
-    global mrPibButton
-    global sprite
-    global spriteButton
-    global dietCoke
-    global dietCokeButton
-
     
     # all of the soft drink buttons
     
@@ -67,11 +57,39 @@ def softDrinks():
         Label(orderFrame, text="mrPib").grid(row=0, column=0)
         Label(orderFrame, text="3.49").grid(row=0, column=2)
         orderCostTotal += 3.49
-    cokeButton = Button(entryFrame, text="Coke", command=coke, padx=fontSize, pady=fontSize).grid(row=0, column=0, padx=fontSize, pady=fontSize)
-    dietCokeButton = Button(entryFrame, text="Diet Coke", command=dietCoke, padx=fontSize, pady=fontSize).grid(row=0, column=1, padx=fontSize, pady=fontSize)
-    spriteButton = Button(entryFrame, text="Sprite", command=sprite, padx=fontSize, pady=fontSize).grid(row=0, column=2, padx=fontSize, pady=fontSize)
-    mrPibButton = Button(entryFrame, text="Mr. Pib", command=mrPib, padx=fontSize, pady=fontSize).grid(row=0, column=3, padx=fontSize, pady=fontSize)
+    #setting grid weight
+    entryFrame.columnconfigure((0,5), weight=1)
+    cokeButton = Button(entryFrame, text="Coke", command=coke, padx=fontSize*3, pady=fontSize, font=("Arial", fontSize)).grid(row=0, column=1, padx=fontSize, pady=fontSize)
+    dietCokeButton = Button(entryFrame, text="Diet Coke", command=dietCoke, padx=fontSize*3, pady=fontSize, font=("Arial", fontSize)).grid(row=0, column=2, padx=fontSize, pady=fontSize)
+    spriteButton = Button(entryFrame, text="Sprite", command=sprite, padx=fontSize*3, pady=fontSize, font=("Arial", fontSize)).grid(row=0, column=3, padx=fontSize, pady=fontSize)
+    mrPibButton = Button(entryFrame, text="Mr. Pib", command=mrPib, padx=fontSize*3, pady=fontSize, font=("Arial", fontSize)).grid(row=0, column=4, padx=fontSize, pady=fontSize)
     
+    #Seccond set of buttons
+    def lemonade():
+        global orderCostTotal
+        Label(orderFrame, text="lemonaid").grid(row=0, column=0)
+        Label(orderFrame, text="3.49").grid(row=0, column=2)
+        orderCostTotal += 3.49
+    def mellowYellow():
+        global orderCostTotal
+        Label(orderFrame, text="mellowYellow").grid(row=0, column=0)
+        Label(orderFrame, text="3.49").grid(row=0, column=2)
+        orderCostTotal += 3.49
+    def cokeZero():
+        global orderCostTotal
+        Label(orderFrame, text="cokeZero").grid(row=0, column=0)
+        Label(orderFrame, text="3.49").grid(row=0, column=2)
+        orderCostTotal += 3.49
+    def fruitPunch():
+        global orderCostTotal
+        Label(orderFrame, text="fruitPunch").grid(row=0, column=0)
+        Label(orderFrame, text="3.49").grid(row=0, column=2)
+        orderCostTotal += 3.49
+    
+    lemonadeButton = Button(entryFrame, text="Lemonade", command=lemonade, padx=fontSize*3, pady=fontSize, font=("Arial", fontSize)).grid(row=1, column=1, padx=fontSize, pady=fontSize)
+    mellowYellowButton = Button(entryFrame, text="Mellow\nYellow", command=mellowYellow, padx=fontSize*3, pady=fontSize, font=("Arial", fontSize)).grid(row=1, column=2, padx=fontSize, pady=fontSize)
+    cokeZeroButton = Button(entryFrame, text="Coke\nZero", command=cokeZero, padx=fontSize*3, pady=fontSize, font=("Arial", fontSize)).grid(row=1, column=3, padx=fontSize, pady=fontSize)
+    fruitPunchButton = Button(entryFrame, text="Fruit\nPunch", command=fruitPunch, padx=fontSize*3, pady=fontSize, font=("Arial", fontSize)).grid(row=1, column=4, padx=fontSize, pady=fontSize)
 
 
 def teaSpecial():
@@ -226,7 +244,7 @@ for frame in [entryFrame, scrollFrame, topFrame, bottomFrame, orderFrame, bottom
 
 # Set row and column configuration for each frame ------------------------------------------------------------------------------------------------------------------------------------------------------------
 root.rowconfigure(0, weight=2)
-root.columnconfigure(0, weight=10)
+root.columnconfigure(0, weight=12)
 
 root.rowconfigure(1, weight=24)
 root.columnconfigure(1, weight=3)
