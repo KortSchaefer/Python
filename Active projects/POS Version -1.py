@@ -16,6 +16,8 @@ root.bind("<Escape>", lambda event: root.attributes('-fullscreen', False))
 
 
 fontSize = int(screen_width/160)
+button_width = int(screen_width/180)
+button_height = int(screen_height/300)
 orderCostTotal = 0
 
 ###
@@ -33,10 +35,15 @@ def softDrinks():
     global fontSize
     global orderFrame
     global entryFrame
-    
-    # all of the soft drink buttons
-    
+    global button_width
+    global button_height
 
+    entryFrame.columnconfigure((0,5), weight=1)
+    # all of the soft drink buttons
+    rOffest = 0
+    cOffest = 0
+
+    #All Commands
     def coke():
         global orderCostTotal
         Label(orderFrame, text="Coke").grid(row=0, column=0)
@@ -57,14 +64,6 @@ def softDrinks():
         Label(orderFrame, text="mrPib").grid(row=0, column=0)
         Label(orderFrame, text="3.49").grid(row=0, column=2)
         orderCostTotal += 3.49
-    #setting grid weight
-    entryFrame.columnconfigure((0,5), weight=1)
-    cokeButton = Button(entryFrame, text="Coke", command=coke, padx=fontSize*3, pady=fontSize, font=("Arial", fontSize)).grid(row=0, column=1, padx=fontSize, pady=fontSize)
-    dietCokeButton = Button(entryFrame, text="Diet Coke", command=dietCoke, padx=fontSize*3, pady=fontSize, font=("Arial", fontSize)).grid(row=0, column=2, padx=fontSize, pady=fontSize)
-    spriteButton = Button(entryFrame, text="Sprite", command=sprite, padx=fontSize*3, pady=fontSize, font=("Arial", fontSize)).grid(row=0, column=3, padx=fontSize, pady=fontSize)
-    mrPibButton = Button(entryFrame, text="Mr. Pib", command=mrPib, padx=fontSize*3, pady=fontSize, font=("Arial", fontSize)).grid(row=0, column=4, padx=fontSize, pady=fontSize)
-    
-    #Seccond set of buttons
     def lemonade():
         global orderCostTotal
         Label(orderFrame, text="lemonaid").grid(row=0, column=0)
@@ -82,14 +81,121 @@ def softDrinks():
         orderCostTotal += 3.49
     def fruitPunch():
         global orderCostTotal
-        Label(orderFrame, text="fruitPunch").grid(row=0, column=0)
+        Label(orderFrame, text="Fruit Punch").grid(row=0, column=0)
         Label(orderFrame, text="3.49").grid(row=0, column=2)
         orderCostTotal += 3.49
+
+    def tonicWater():
+        global orderCostTotal
+        Label(orderFrame, text="Tonic Water").grid(row=0, column=0)
+        Label(orderFrame, text="2.99").grid(row=0, column=2)
+        orderCostTotal += 2.99
+
+    def rootBeer():
+        global orderCostTotal
+        Label(orderFrame, text="Root Beer").grid(row=0, column=0)
+        Label(orderFrame, text="3.29").grid(row=0, column=2)
+        orderCostTotal += 3.29
+
+    def drPepper():
+        global orderCostTotal
+        Label(orderFrame, text="Dr Pepper").grid(row=0, column=0)
+        Label(orderFrame, text="3.49").grid(row=0, column=2)
+        orderCostTotal += 3.49
+
+    def raspTeaFtn():
+        global orderCostTotal
+        Label(orderFrame, text="Rasp Tea Ftn").grid(row=0, column=0)
+        Label(orderFrame, text="2.79").grid(row=0, column=2)
+        orderCostTotal += 2.79
+    def sweetTea():
+        global orderCostTotal
+        Label(orderFrame, text="Sweet Tea").grid(row=0, column=0)
+        Label(orderFrame, text="2.49").grid(row=0, column=2)
+        orderCostTotal += 2.49
+
+    def hotTea():
+        global orderCostTotal
+        Label(orderFrame, text="Hot Tea").grid(row=0, column=0)
+        Label(orderFrame, text="1.99").grid(row=0, column=2)
+        orderCostTotal += 1.99
+
+    def coffee():
+        global orderCostTotal
+        Label(orderFrame, text="Coffee").grid(row=0, column=0)
+        Label(orderFrame, text="2.99").grid(row=0, column=2)
+        orderCostTotal += 2.99
+
+    def icedTea():
+        global orderCostTotal
+        Label(orderFrame, text="Iced Tea").grid(row=0, column=0)
+        Label(orderFrame, text="2.79").grid(row=0, column=2)
+        orderCostTotal += 2.79
+
+    def hotCocoa():
+        global orderCostTotal
+        Label(orderFrame, text="Hot Cocoa").grid(row=0, column=0)
+        Label(orderFrame, text="3.19").grid(row=0, column=2)
+        orderCostTotal += 3.19
+
+    def decafCoffee():
+        global orderCostTotal
+        Label(orderFrame, text="Decaf Coffee").grid(row=0, column=0)
+        Label(orderFrame, text="2.99").grid(row=0, column=2)
+        orderCostTotal += 2.99
+
+    def noBev():
+        global orderCostTotal
+        Label(orderFrame, text="No Bev").grid(row=0, column=0)
+        Label(orderFrame, text="0.00").grid(row=0, column=2)
+
+    def water():
+        global orderCostTotal
+        Label(orderFrame, text="Water").grid(row=0, column=0)
+        Label(orderFrame, text="0.00").grid(row=0, column=2)
+    def blank():
+        pass
+
+    # Updated buttons data with new drinks
+    buttonDataSoftDrinks = [
+        {"name": "Coke", "command": coke},
+        {"name": "Diet Coke", "command": dietCoke},
+        {"name": "Sprite", "command": sprite},
+        {"name": "Mr. Pib", "command": mrPib},
+        {"name": "Lemonade", "command": lemonade},
+        {"name": "Mellow\nYellow", "command": mellowYellow},
+        {"name": "Coke\nZero", "command": cokeZero},
+        {"name": "Fruit\nPunch", "command": fruitPunch},
+        {"name": "Tonic Water", "command": tonicWater},    
+        {"name": "Root Beer", "command": rootBeer},        
+        {"name": "Dr Pepper", "command": drPepper},        
+        {"name": "Rasp Tea Ftn", "command": raspTeaFtn},
+        {"name": " ", "command": blank},
+        {"name": " ", "command": blank},
+        {"name": " ", "command": blank},
+        {"name": " ", "command": blank},
+        {"name": "Sweet Tea", "command": sweetTea},
+        {"name": "Hot Tea", "command": hotTea},  
+        {"name": "Coffee", "command": coffee},    
+        {"name": "Iced Tea", "command": icedTea},
+        {"name": " ", "command": blank},    
+        {"name": "Hot Cocoa", "command": hotCocoa},    
+        {"name": "Decaf Coffee", "command": decafCoffee},
+        {"name": " ", "command": blank}, 
+        {"name": "No Bev", "command": noBev},
+        {"name": " ", "command": blank},
+        {"name": " ", "command": blank},       
+        {"name": "Water", "command": water}     
+        ]
+
     
-    lemonadeButton = Button(entryFrame, text="Lemonade", command=lemonade, padx=fontSize*3, pady=fontSize, font=("Arial", fontSize)).grid(row=1, column=1, padx=fontSize, pady=fontSize)
-    mellowYellowButton = Button(entryFrame, text="Mellow\nYellow", command=mellowYellow, padx=fontSize*3, pady=fontSize, font=("Arial", fontSize)).grid(row=1, column=2, padx=fontSize, pady=fontSize)
-    cokeZeroButton = Button(entryFrame, text="Coke\nZero", command=cokeZero, padx=fontSize*3, pady=fontSize, font=("Arial", fontSize)).grid(row=1, column=3, padx=fontSize, pady=fontSize)
-    fruitPunchButton = Button(entryFrame, text="Fruit\nPunch", command=fruitPunch, padx=fontSize*3, pady=fontSize, font=("Arial", fontSize)).grid(row=1, column=4, padx=fontSize, pady=fontSize)
+    for i, button_info in enumerate(buttonDataSoftDrinks):
+        cOffest += 1
+        button = Button(entryFrame, text=button_info["name"], command=button_info["command"], font=("Arial", fontSize), padx=20, pady=5, width=button_width, height=button_height)
+        button.grid(row=rOffest, column=cOffest, padx=15, pady=15, sticky="W")
+        if cOffest == 4:
+            cOffest = 0;rOffest += 1
+    
 
 
 def teaSpecial():
