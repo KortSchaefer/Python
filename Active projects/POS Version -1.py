@@ -27,6 +27,10 @@ orderCostTotal = 0
 currentOrder = []
 #list of currently highlighted labels
 highlighted_labels = []
+#global variable for row and column management
+current_row = 0
+current_column = 0
+max_rows = 60
 #PRICE CONFIGURATION
 softDrinksPrice = 3.49
 
@@ -156,7 +160,20 @@ def getQuantity():
     print('Get check')
 
 def repeat():
-    print('Get check')
+    global current_row, current_column  # Track row and column
+
+    # Create duplicates of highlighted labels
+    for label in highlighted_labels:
+        duplicate_label = Label(orderFrame, text=label.cget('text'), fg="blue", cursor="hand2")
+        duplicate_label.bind("<Button-1>", ifClicked)  # Bind the click event to duplicates too
+        
+        # Place in the grid, increment row, and manage column wrapping
+        duplicate_label.grid(row=current_row, column=current_column, padx=10, pady=5)
+        
+        current_row += 1  # Move to the next row
+        if current_row >= max_rows:  # When max rows is reached, move to the next column
+            current_row = 0  # Reset to row 0
+            current_column += 1  # Move to the next column
 
 def modify():
     print('Get check')
