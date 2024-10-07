@@ -20,6 +20,7 @@ button_width = int(screen_width/180)
 button_height = int(screen_height/300)
 orderCostTotal = 0
 softDrinksPrice = 3.49
+currentOrder = []
 
 ###
 ###   Definition space
@@ -28,19 +29,26 @@ softDrinksPrice = 3.49
 #def hide_all_buttons():
 #    for widget in frame.winfo_children():  # Loop through all children in the frame
 #        widget.grid_forget()  
-            
-currentOrder = []
+def ifClicked(event):
+    label = event.widget  # Get the clicked label widget
+    label.config(text="Clicked!")
+
+
+
 def addToOrder(name, price):
     global orderCostTotal
     global fontSize
     global orderFrame
     global orderCostTotal
+    
 
     
     
     currentOrder.append({"name": name, "price": price})
 
-    Label(orderFrame, text=name).grid(row=len(currentOrder)-1, column=0)
+    Label(orderFrame, text=name, cursor="hand2").grid(row=len(currentOrder)-1, column=0, padx=10, pady=5)
+    Label.bind("<Button-1>", ifClicked)
+
     Label(orderFrame, text=f"{price:.2f}").grid(row=len(currentOrder)-1, column=2)
 
     orderCostTotal += price
@@ -142,7 +150,8 @@ def modify():
     print('Get check')
 
 def delete():
-    print('Get check')
+    pass
+    
 
 def rapidFire():
     print('Get check')
