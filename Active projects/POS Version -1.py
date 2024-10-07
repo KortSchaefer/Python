@@ -19,6 +19,7 @@ fontSize = int(screen_width/160)
 button_width = int(screen_width/180)
 button_height = int(screen_height/300)
 orderCostTotal = 0
+softDrinksPrice = 3.49
 
 ###
 ###   Definition space
@@ -28,8 +29,25 @@ orderCostTotal = 0
 #    for widget in frame.winfo_children():  # Loop through all children in the frame
 #        widget.grid_forget()  
             
+currentOrder = []
+def addToOrder(name, price):
+    global orderCostTotal
+    global fontSize
+    global orderFrame
+    global orderCostTotal
+
+    
+    
+    currentOrder.append({"name": name, "price": price})
+
+    Label(orderFrame, text=name).grid(row=len(currentOrder)-1, column=0)
+    Label(orderFrame, text=f"{price:.2f}").grid(row=len(currentOrder)-1, column=2)
+
+    orderCostTotal += price
+    
 
 
+#First soft drink window def. WORKS!!!
 def softDrinks():
     global orderCostTotal
     global fontSize
@@ -37,171 +55,66 @@ def softDrinks():
     global entryFrame
     global button_width
     global button_height
-
+    #setting buttons to middle
     entryFrame.columnconfigure((0,5), weight=1)
-    # all of the soft drink buttons
+    # row and column offset vars for positioning
     rOffest = 0
     cOffest = 0
-
-    #All Commands
-    def coke():
-        global orderCostTotal
-        Label(orderFrame, text="Coke").grid(row=0, column=0)
-        Label(orderFrame, text="3.49").grid(row=0, column=2)
-        orderCostTotal += 3.49
-    def dietCoke():
-        global orderCostTotal
-        Label(orderFrame, text="dietCoke").grid(row=0, column=0)
-        Label(orderFrame, text="3.49").grid(row=0, column=2)
-        orderCostTotal += 3.49
-    def sprite():
-        global orderCostTotal
-        Label(orderFrame, text="sprite").grid(row=0, column=0)
-        Label(orderFrame, text="3.49").grid(row=0, column=2)
-        orderCostTotal += 3.49
-    def mrPib():
-        global orderCostTotal
-        Label(orderFrame, text="mrPib").grid(row=0, column=0)
-        Label(orderFrame, text="3.49").grid(row=0, column=2)
-        orderCostTotal += 3.49
-    def lemonade():
-        global orderCostTotal
-        Label(orderFrame, text="lemonaid").grid(row=0, column=0)
-        Label(orderFrame, text="3.49").grid(row=0, column=2)
-        orderCostTotal += 3.49
-    def mellowYellow():
-        global orderCostTotal
-        Label(orderFrame, text="mellowYellow").grid(row=0, column=0)
-        Label(orderFrame, text="3.49").grid(row=0, column=2)
-        orderCostTotal += 3.49
-    def cokeZero():
-        global orderCostTotal
-        Label(orderFrame, text="cokeZero").grid(row=0, column=0)
-        Label(orderFrame, text="3.49").grid(row=0, column=2)
-        orderCostTotal += 3.49
-    def fruitPunch():
-        global orderCostTotal
-        Label(orderFrame, text="Fruit Punch").grid(row=0, column=0)
-        Label(orderFrame, text="3.49").grid(row=0, column=2)
-        orderCostTotal += 3.49
-
-    def tonicWater():
-        global orderCostTotal
-        Label(orderFrame, text="Tonic Water").grid(row=0, column=0)
-        Label(orderFrame, text="2.99").grid(row=0, column=2)
-        orderCostTotal += 2.99
-
-    def rootBeer():
-        global orderCostTotal
-        Label(orderFrame, text="Root Beer").grid(row=0, column=0)
-        Label(orderFrame, text="3.29").grid(row=0, column=2)
-        orderCostTotal += 3.29
-
-    def drPepper():
-        global orderCostTotal
-        Label(orderFrame, text="Dr Pepper").grid(row=0, column=0)
-        Label(orderFrame, text="3.49").grid(row=0, column=2)
-        orderCostTotal += 3.49
-
-    def raspTeaFtn():
-        global orderCostTotal
-        Label(orderFrame, text="Rasp Tea Ftn").grid(row=0, column=0)
-        Label(orderFrame, text="2.79").grid(row=0, column=2)
-        orderCostTotal += 2.79
-    def sweetTea():
-        global orderCostTotal
-        Label(orderFrame, text="Sweet Tea").grid(row=0, column=0)
-        Label(orderFrame, text="2.49").grid(row=0, column=2)
-        orderCostTotal += 2.49
-
-    def hotTea():
-        global orderCostTotal
-        Label(orderFrame, text="Hot Tea").grid(row=0, column=0)
-        Label(orderFrame, text="1.99").grid(row=0, column=2)
-        orderCostTotal += 1.99
-
-    def coffee():
-        global orderCostTotal
-        Label(orderFrame, text="Coffee").grid(row=0, column=0)
-        Label(orderFrame, text="2.99").grid(row=0, column=2)
-        orderCostTotal += 2.99
-
-    def icedTea():
-        global orderCostTotal
-        Label(orderFrame, text="Iced Tea").grid(row=0, column=0)
-        Label(orderFrame, text="2.79").grid(row=0, column=2)
-        orderCostTotal += 2.79
-
-    def hotCocoa():
-        global orderCostTotal
-        Label(orderFrame, text="Hot Cocoa").grid(row=0, column=0)
-        Label(orderFrame, text="3.19").grid(row=0, column=2)
-        orderCostTotal += 3.19
-
-    def decafCoffee():
-        global orderCostTotal
-        Label(orderFrame, text="Decaf Coffee").grid(row=0, column=0)
-        Label(orderFrame, text="2.99").grid(row=0, column=2)
-        orderCostTotal += 2.99
-
-    def noBev():
-        global orderCostTotal
-        Label(orderFrame, text="No Bev").grid(row=0, column=0)
-        Label(orderFrame, text="0.00").grid(row=0, column=2)
-
-    def water():
-        global orderCostTotal
-        Label(orderFrame, text="Water").grid(row=0, column=0)
-        Label(orderFrame, text="0.00").grid(row=0, column=2)
+    # blank function that does nothing
     def blank():
         pass
-
     # Updated buttons data with new drinks
     buttonDataSoftDrinks = [
-        {"name": "Coke", "command": coke},
-        {"name": "Diet Coke", "command": dietCoke},
-        {"name": "Sprite", "command": sprite},
-        {"name": "Mr. Pib", "command": mrPib},
-        {"name": "Lemonade", "command": lemonade},
-        {"name": "Mellow\nYellow", "command": mellowYellow},
-        {"name": "Coke\nZero", "command": cokeZero},
-        {"name": "Fruit\nPunch", "command": fruitPunch},
-        {"name": "Tonic Water", "command": tonicWater},    
-        {"name": "Root Beer", "command": rootBeer},        
-        {"name": "Dr Pepper", "command": drPepper},        
-        {"name": "Rasp Tea Ftn", "command": raspTeaFtn},
-        {"name": " ", "command": blank},
-        {"name": " ", "command": blank},
-        {"name": " ", "command": blank},
-        {"name": " ", "command": blank},
-        {"name": "Sweet Tea", "command": sweetTea},
-        {"name": "Hot Tea", "command": hotTea},  
-        {"name": "Coffee", "command": coffee},    
-        {"name": "Iced Tea", "command": icedTea},
-        {"name": " ", "command": blank},    
-        {"name": "Hot Cocoa", "command": hotCocoa},    
-        {"name": "Decaf Coffee", "command": decafCoffee},
-        {"name": " ", "command": blank}, 
-        {"name": "No Bev", "command": noBev},
-        {"name": " ", "command": blank},
-        {"name": " ", "command": blank},       
-        {"name": "Water", "command": water}     
-        ]
+    {"name": "Coke", "command": lambda: addToOrder('Coke', softDrinksPrice)},
+    {"name": "Diet Coke", "command": lambda: addToOrder('Diet Coke', softDrinksPrice)},
+    {"name": "Sprite", "command": lambda: addToOrder('Sprite', softDrinksPrice)},
+    {"name": "Mr. Pib", "command": lambda: addToOrder('Mr. Pib', softDrinksPrice)},
+    {"name": "Lemonade", "command": lambda: addToOrder('Lemonade', softDrinksPrice)},
+    {"name": "Mellow\nYellow", "command": lambda: addToOrder('Mellow Yellow', softDrinksPrice)},
+    {"name": "Coke\nZero", "command": lambda: addToOrder('Coke Zero', softDrinksPrice)},
+    {"name": "Fruit\nPunch", "command": lambda: addToOrder('Fruit Punch', softDrinksPrice)},
+    {"name": "Tonic Water", "command": lambda: addToOrder('Tonic Water', softDrinksPrice)},    
+    {"name": "Root Beer", "command": lambda: addToOrder('Root Beer', softDrinksPrice)},        
+    {"name": "Dr Pepper", "command": lambda: addToOrder('Dr Pepper', softDrinksPrice)},        
+    {"name": "Rasp Tea Ftn", "command": lambda: addToOrder('Rasp Tea Ftn', softDrinksPrice)},
+    {"name": " ", "command": blank}, 
+    {"name": " ", "command": blank}, 
+    {"name": " ", "command": blank}, 
+    {"name": " ", "command": blank}, 
+    {"name": "Sweet Tea", "command": lambda: addToOrder('Sweet Tea', softDrinksPrice)},
+    {"name": "Hot Tea", "command": lambda: addToOrder('Hot Tea', softDrinksPrice)},  
+    {"name": "Coffee", "command": lambda: addToOrder('Coffee', softDrinksPrice)},    
+    {"name": "Iced Tea", "command": lambda: addToOrder('Iced Tea', softDrinksPrice)},
+    {"name": " ", "command": blank},   
+    {"name": "Hot Cocoa", "command": lambda: addToOrder('Hot Cocoa', softDrinksPrice)},    
+    {"name": "Decaf Coffee", "command": lambda: addToOrder('Decaf Coffee', softDrinksPrice)},
+    {"name": " ", "command": blank},  
+    {"name": "No Bev", "command": lambda: addToOrder('No Bev', softDrinksPrice)},
+    {"name": " ", "command": blank},  
+    {"name": " ", "command": blank},  
+    {"name": "Water", "command": lambda: addToOrder('Water', softDrinksPrice)}     
+]
 
-    
+    #for loop adding the buttons onto the screen
     for i, button_info in enumerate(buttonDataSoftDrinks):
-        cOffest += 1
-        button = Button(entryFrame, text=button_info["name"], command=button_info["command"], font=("Arial", fontSize), padx=20, pady=5, width=button_width, height=button_height)
-        button.grid(row=rOffest, column=cOffest, padx=15, pady=15, sticky="W")
-        if cOffest == 4:
-            cOffest = 0;rOffest += 1
+        if button_info["name"] == " ":
+                cOffest += 1
+                button = Button(entryFrame, text=button_info["name"], command=button_info["command"], font=("Arial", fontSize), padx=20, pady=5, width=button_width, height=button_height, state=DISABLED, highlightthickness=0, borderwidth=0)
+                button.grid(row=rOffest, column=cOffest, padx=15, pady=15, sticky="W")
+                if cOffest == 4:
+                    cOffest = 0;rOffest += 1
+        else:
+            cOffest += 1
+            button = Button(entryFrame, text=button_info["name"], command=button_info["command"], font=("Arial", fontSize), padx=20, pady=5, width=button_width, height=button_height)
+            button.grid(row=rOffest, column=cOffest, padx=15, pady=15, sticky="W")
+            if cOffest == 4:
+                cOffest = 0;rOffest += 1
     
-
-
 def teaSpecial():
     print("Button 2 pressed!")
 
 def apps():
+
     print("Button 3 pressed!")
 
 def appsMeal():
