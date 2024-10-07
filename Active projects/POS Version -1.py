@@ -73,12 +73,13 @@ def addToOrder(name, price):
     
     currentOrder.append({"name": name, "price": price})
 
-    order_label = Label(orderFrame, text=name, cursor="hand2")
-    order_label.grid(row=len(currentOrder) - 1, column=0, padx=10, pady=5)
+    numSpaces = " " * (100 - (2*len(name)))
+    order_label = Label(orderFrame, text=str(name+numSpaces+"$"+str(price)), cursor="hand2")
+    order_label.grid(row=len(currentOrder) - 1, column=0, padx=10, pady=5, sticky="w")
     # Bind the click event to the created label
     order_label.bind("<Button-1>", ifClicked)
 
-    Label(orderFrame, text=f"{price:.2f}").grid(row=len(currentOrder)-1, column=2)
+    
 
     orderCostTotal += price
     
