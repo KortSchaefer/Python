@@ -21,6 +21,8 @@ button_height = int(screen_height/300)
 orderCostTotal = 0
 softDrinksPrice = 3.49
 currentOrder = []
+highlighted_labels = []
+current_highlighted_label = None
 
 ###
 ###   Definition space
@@ -46,8 +48,35 @@ def addToOrder(name, price):
     
     currentOrder.append({"name": name, "price": price})
 
-    Label(orderFrame, text=name, cursor="hand2").grid(row=len(currentOrder)-1, column=0, padx=10, pady=5)
-    Label.bind("<Button-1>", ifClicked)
+def ifClicked(event):
+    label = event.widget
+    if label in highlighted_labels:
+        # If it is highlighted, reset its appearance and remove from the list
+        label.config(bg="SystemButtonFace", highlightthickness=0)  # Reset color and highlight
+        highlighted_labels.remove(label)  # Remove from highlighted list
+    else:
+        # If it is not highlighted, highlight it and add to the list
+        label.config(highlightbackground="red", highlightcolor="red", highlightthickness=2)  # Highlight clicked label
+        label.config(bg="yellow")  # Change background color for visibility
+        highlighted_labels.append(label)  # Add to highlighted list
+
+
+
+def addToOrder(name, price):
+    global orderCostTotal
+    global fontSize
+    global orderFrame
+    global orderCostTotal
+    
+
+    
+    
+    currentOrder.append({"name": name, "price": price})
+
+    order_label = Label(orderFrame, text=name, cursor="hand2")
+    order_label.grid(row=len(currentOrder) - 1, column=0, padx=10, pady=5)
+    # Bind the click event to the created label
+    order_label.bind("<Button-1>", ifClicked)
 
     Label(orderFrame, text=f"{price:.2f}").grid(row=len(currentOrder)-1, column=2)
 
@@ -150,7 +179,9 @@ def modify():
     print('Get check')
 
 def delete():
-    pass
+    for label in highlighted_labels.copy():
+        label.destroy()  # Destroy the label
+    highlighted_labels.clear()
     
 
 def rapidFire():
