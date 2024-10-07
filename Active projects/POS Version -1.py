@@ -5,49 +5,36 @@ root = Tk()
 root.title("POS System")
 root.iconbitmap(r"C:\Users\Kingc\Documents\Code\Python\Practice Images\code.ico")
 root.configure(bg="lightblue")
-
+#screen width and height variables
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
+#set fullscreen
 root.geometry(f"{screen_width}x{screen_height}+0+0")
 root.attributes('-fullscreen', True)
-
 # Bind the ESC key to exit fullscreen
 root.bind("<Escape>", lambda event: root.attributes('-fullscreen', False))
 
+###
+###   Variables
+###
 
+#Screen size variables
 fontSize = int(screen_width/160)
 button_width = int(screen_width/180)
 button_height = int(screen_height/300)
+#order total variables
 orderCostTotal = 0
-softDrinksPrice = 3.49
 currentOrder = []
+#list of currently highlighted labels
 highlighted_labels = []
-current_highlighted_label = None
+#PRICE CONFIGURATION
+softDrinksPrice = 3.49
 
 ###
 ###   Definition space
 ###
 
-#def hide_all_buttons():
-#    for widget in frame.winfo_children():  # Loop through all children in the frame
-#        widget.grid_forget()  
-def ifClicked(event):
-    label = event.widget  # Get the clicked label widget
-    label.config(text="Clicked!")
-
-
-
-def addToOrder(name, price):
-    global orderCostTotal
-    global fontSize
-    global orderFrame
-    global orderCostTotal
-    
-
-    
-    
-    currentOrder.append({"name": name, "price": price})
-
+#def to highlight clicked label
 def ifClicked(event):
     label = event.widget
     if label in highlighted_labels:
@@ -61,26 +48,21 @@ def ifClicked(event):
         highlighted_labels.append(label)  # Add to highlighted list
 
 
-
+#def to add current button item to order
 def addToOrder(name, price):
     global orderCostTotal
     global fontSize
     global orderFrame
     global orderCostTotal
-    
-
-    
-    
+    #Adding current button item to a list to be proccessed later
     currentOrder.append({"name": name, "price": price})
-
+    #Creating label for current button item
     numSpaces = " " * (100 - (2*len(name)))
     order_label = Label(orderFrame, text=str(name+numSpaces+"$"+str(price)), cursor="hand2")
     order_label.grid(row=len(currentOrder) - 1, column=0, padx=10, pady=5, sticky="w")
     # Bind the click event to the created label
     order_label.bind("<Button-1>", ifClicked)
-
-    
-
+    #Adding price to total
     orderCostTotal += price
     
 
