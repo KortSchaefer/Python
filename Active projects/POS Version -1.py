@@ -176,7 +176,7 @@ def repeat():
             current_column += 1  # Move to the next column
 
 def modify():
-    print('Get check')
+    pass
 
 def delete():
     for label in highlighted_labels.copy():
