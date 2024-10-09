@@ -27,6 +27,29 @@ orderCostTotal = 0
 currentOrder = []
 #list of currently highlighted labels
 highlighted_labels = []
+seat_orders = {
+    "seat1": [],
+    "seat2": [],
+    "seat3": [],
+    "seat4": [],
+    "seat5": [],
+    "seat6": [],
+    "seat7": [],
+    "seat8": [],
+    "seat9": [],
+    "seat10": [],
+    "seat11": [],
+    "seat12": [],
+    "seat13": [],
+    "seat14": [],
+    "seat15": [],
+    "seat16": [],
+    "seat17": [],
+    "seat18": [],
+    "seat19": [],
+    "seat20": [],
+}
+currentSeat = "seat1"
 #global variable for row and column management
 current_row = 0
 current_column = 0
@@ -58,12 +81,18 @@ def addToOrder(name, price):
     global fontSize
     global orderFrame
     global orderCostTotal
+    global currentSeat
+    global seat_orders
+    
+    if len(seat_orders[currentSeat]) == 0:
+        seat_label = Label(orderFrame, text=f"{currentSeat}", font=("Arial", fontSize + 2, "bold"))
+        seat_label.grid(row=len(orderFrame.winfo_children()), column=0, padx=10, pady=5, sticky="w")
     #Adding current button item to a list to be proccessed later
-    currentOrder.append({"name": name, "price": price})
+    seat_orders[currentSeat].append({"name": name, "price": price})
     #Creating label for current button item
     numSpaces = " " * (100 - (2*len(name)))
     order_label = Label(orderFrame, text=str(name+numSpaces+"$"+str(price)), cursor="hand2")
-    order_label.grid(row=len(currentOrder) - 1, column=0, padx=10, pady=5, sticky="w")
+    order_label.grid(row=len(orderFrame.winfo_children()), column=0, padx=10, pady=5, sticky="w")
     # Bind the click event to the created label
     order_label.bind("<Button-1>", ifClicked)
     #Adding price to total
