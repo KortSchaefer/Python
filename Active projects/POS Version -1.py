@@ -78,6 +78,7 @@ def ifClicked(event):
 
 #def to add current button item to order
 def addToOrder(name, price):
+    #global variables
     global orderCostTotal
     global fontSize
     global orderFrame
