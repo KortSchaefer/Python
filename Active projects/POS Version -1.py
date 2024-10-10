@@ -28,6 +28,7 @@ currentOrder = []
 #list of currently highlighted labels
 highlighted_labels = []
 seat_orders = {
+    "table": [],
     "seat1": [],
     "seat2": [],
     "seat3": [],
@@ -49,7 +50,7 @@ seat_orders = {
     "seat19": [],
     "seat20": [],
 }
-currentSeat = "seat1"
+currentSeat = "table"
 #global variable for row and column management
 current_row = 0
 current_column = 0
@@ -220,7 +221,13 @@ def close():
     print('close')
 
 def nextSeat():
-    print('next Seat')
+    global currentSeat
+    if currentSeat == 'table':
+        currentSeat = 'seat 1'
+    elif currentSeat == 'seat 20':
+        pass
+    else:
+        currentSeat = 'seat ' + str(int(currentSeat[-1]) + 1)
 
 
 ### |  |  |  |
