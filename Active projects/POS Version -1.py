@@ -57,7 +57,44 @@ current_column = 0
 max_rows = 60
 #PRICE CONFIGURATION
 softDrinksPrice = 3.49
+### Class Space
+class ScrollingButtonWheel(Frame):
+    def __init__(self, parent):
+        super().__init__(parent)
 
+        # Create a canvas for scrolling
+        self.canvas = Canvas(self)
+        self.scrollbar = Scrollbar(self, orient="horizontal", command=self.canvas.xview)
+        self.button_frame = Frame(self.canvas)
+
+        # Configure the canvas
+        self.button_frame.bind("<Configure>", lambda e: self.canvas.configure(scrollregion=self.canvas.bbox("all")))
+
+        # Create a window in the canvas
+        self.canvas.create_window((0, 0), window=self.button_frame, anchor="nw")
+
+        # Set up the scrollbar
+        self.canvas.config(xscrollcommand=self.scrollbar.set)
+
+        # Pack the canvas and scrollbar
+        self.scrollbar.pack(side="bottom", fill="x")
+        self.canvas.pack(side="top", fill="both", expand=True)
+
+        # Initialize button counter and maximum buttons
+        self.button_count = 0
+        self.max_buttons = 20  # Change this to the desired number of buttons
+
+        # Button to add the next button
+        self.add_button = Button(self, text="Add Button", command=self.add_next_button)
+        self.add_button.pack(pady=10)
+        def add_next_button(self):
+            if self.button_count < self.max_buttons:
+                button = Button(self.button_frame, text=f"Button {self.button_count + 1}", 
+                                command=lambda i=self.button_count: self.on_button_click(i))
+                button.pack(side="left", padx=5, pady=5)  # Pack buttons horizontally
+                self.button_count += 1  # Increment the counter
+
+        
 ###
 ###   Definition space
 ###
@@ -246,10 +283,21 @@ def nextSeat():
 ### |  |  |  |
 ### |xx|  |  | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ### |  |  |  |
-orderFrame = LabelFrame(root, text="Order Box", relief='raised', bg='white')
+orderFrameWrapper = LabelFrame(root, text="Order Box", relief='raised', bg='white')
+orderFrameWrapper.grid_propagate(False)
+orderFrameWrapper.grid(column=0, row=1)
+orderFrameWrapper.grid_columnconfigure(0, weight=1)
+orderFrameWrapper.grid_rowconfigure((0), weight=10)
+orderFrameWrapper.grid_rowconfigure((1), weight=1)
+
+
+orderFrame = LabelFrame(orderFrameWrapper, text="Order Box", relief='raised', bg='white')
 orderFrame.grid_propagate(False)
-orderFrame.grid(column=0, row=1, padx=(15, 2), pady=2)
-orderBox= Label(orderFrame, text='Box').pack()
+orderFrame.grid(column=0, row=0)
+
+orderScrollFrame = LabelFrame(orderFrameWrapper, text="scroll Box", relief='raised', bg='white')
+orderScrollFrame.grid_propagate(False)
+orderScrollFrame.grid(column=0, row=1, padx=2, pady=2)
 
 ### |  |  |  |
 ### |  |  |xx| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -343,7 +391,7 @@ for i, button_info in enumerate(buttonData):
 
 
 ### Frame anchoring -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-for frame in [entryFrame, scrollFrame, topFrame, bottomFrame, orderFrame, bottomLeftFrame, bottomRightFrame]:
+for frame in [entryFrame, scrollFrame, topFrame, bottomFrame, orderFrame, bottomLeftFrame, bottomRightFrame, orderScrollFrame, orderFrameWrapper]:
     # sticky='nswe' acts like fill='both'
     frame.grid(sticky='NSWE')
     frame.grid_propagate(0)
