@@ -64,7 +64,9 @@ softDrinksPrice = 3.49
 
 #def to highlight clicked label
 def ifClicked(event):
+    global currentSeat
     label = event.widget
+    
     if label in highlighted_labels:
         # If it is highlighted, reset its appearance and remove from the list
         label.config(bg="SystemButtonFace", highlightthickness=0)  # Reset color and highlight
@@ -74,6 +76,7 @@ def ifClicked(event):
         label.config(highlightbackground="red", highlightcolor="red", highlightthickness=2)  # Highlight clicked label
         label.config(bg="yellow")  # Change background color for visibility
         highlighted_labels.append(label)  # Add to highlighted list
+        
 
 
 #def to add current button item to order
@@ -101,7 +104,16 @@ def addToOrder(name, price):
     orderCostTotal += price
     
 
+def setCurrentSeat(seat_number):
+    global currentSeat
+    global seat_orders
 
+    # Check if the seat_number exists in seat_orders
+    if seat_number in seat_orders:
+        currentSeat = seat_number
+        print(f"Current seat set to {currentSeat}")
+    else:
+        print(f"Seat {seat_number} does not exist")
 #First soft drink window def. WORKS!!!
 def softDrinks():
     global orderCostTotal
