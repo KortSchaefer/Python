@@ -224,11 +224,11 @@ def close():
 def nextSeat():
     global currentSeat
     if currentSeat == 'table':
-        currentSeat = 'seat 1'
-    elif currentSeat == 'seat 20':
+        currentSeat = 'seat1'
+    elif currentSeat == 'seat20':
         pass
     else:
-        currentSeat = 'seat ' + str(int(currentSeat[-1]) + 1)
+        currentSeat = 'seat' + str(int(currentSeat[-1]) + 1)
 
 
 ### |  |  |  |
