@@ -58,43 +58,7 @@ max_rows = 60
 #PRICE CONFIGURATION
 softDrinksPrice = 3.49
 ### Class Space
-class ScrollingButtonWheel(Frame):
-    def __init__(self, parent):
-        super().__init__(parent)
 
-        # Create a canvas for scrolling
-        self.canvas = Canvas(self)
-        self.scrollbar = Scrollbar(self, orient="horizontal", command=self.canvas.xview)
-        self.button_frame = Frame(self.canvas)
-
-        # Configure the canvas
-        self.button_frame.bind("<Configure>", lambda e: self.canvas.configure(scrollregion=self.canvas.bbox("all")))
-
-        # Create a window in the canvas
-        self.canvas.create_window((0, 0), window=self.button_frame, anchor="nw")
-
-        # Set up the scrollbar
-        self.canvas.config(xscrollcommand=self.scrollbar.set)
-
-        # Pack the canvas and scrollbar
-        self.scrollbar.pack(side="bottom", fill="x")
-        self.canvas.pack(side="top", fill="both", expand=True)
-
-        # Initialize button counter and maximum buttons
-        self.button_count = 0
-        self.max_buttons = 20  # Change this to the desired number of buttons
-
-        # Button to add the next button
-        self.add_button = Button(self, text="Add Button", command=self.add_next_button)
-        self.add_button.pack(pady=10)
-        def add_next_button(self):
-            if self.button_count < self.max_buttons:
-                button = Button(self.button_frame, text=f"Button {self.button_count + 1}", 
-                                command=lambda i=self.button_count: self.on_button_click(i))
-                button.pack(side="left", padx=5, pady=5)  # Pack buttons horizontally
-                self.button_count += 1  # Increment the counter
-
-        
 ###
 ###   Definition space
 ###
@@ -272,6 +236,7 @@ def close():
 
 def nextSeat():
     global currentSeat
+    
     if currentSeat == 'table':
         currentSeat = 'seat1'
     elif currentSeat == 'seat20':
@@ -352,6 +317,8 @@ buttonDataBottomLeft = [
 for i, button_info in enumerate(buttonDataBottomLeft):
     button = Button(bottomLeftFrame, text=button_info["name"], command=button_info["command"], font=("Arial", fontSize), padx=20, pady=5)
     button.grid(row=0, column=i, padx=5, pady=5, sticky="W")
+
+
 
 ### Button Creation bottom right -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
