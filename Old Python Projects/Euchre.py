@@ -1,6 +1,6 @@
 import random
 import time
-
+#need to remake lol
 #Card values aka. tier of card
 card_values ={
   
