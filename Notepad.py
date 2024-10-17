@@ -8,7 +8,7 @@ class SyntaxNotepad(tk.Tk):
 
         # Window setup
         self.title("Syntax Notepad")
-        self.geometry("800x600")
+        self.geometry("800x800")
 
         # Text widget with Scrollbar
         self.text_widget = tk.Text(self, wrap="word", undo=True, font=("Courier", 12))
