@@ -323,7 +323,7 @@ for i, button_info in enumerate(buttonDataBottomLeft):
 ### Button Creation bottom right -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
+#dict to sote button data
 buttonDataBottomRight = [
     {"name": "Get Check", "command": getCheck},
     {"name": "Recipe", "command": getRecipe},
@@ -333,7 +333,7 @@ buttonDataBottomRight = [
     {"name": "Delete", "command": delete},
     {"name": "Rapid Fire", "command": rapidFire}
 ]
-
+#add them to the screen
 for i, button_info in enumerate(buttonDataBottomRight):
     button = Button(bottomRightFrame, text=button_info["name"], command=button_info["command"], font=("Arial", fontSize), padx=20, pady=5)
     button.grid(row=0, column=abs(i-12), padx=5, pady=5, sticky='EN')
