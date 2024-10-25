@@ -3,3 +3,4 @@
 3. auto clicker
 4. Text compiler
 5. Web API programs
+6. Password Vault
