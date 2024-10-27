@@ -4,3 +4,4 @@
 4. Text compiler
 5. Web API programs
 6. Password Vault
+7. database gui
