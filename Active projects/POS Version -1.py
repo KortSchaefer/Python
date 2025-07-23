@@ -81,28 +81,34 @@ def ifClicked(event):
 
 
 #def to add current button item to order
-def addToOrder(name, price):
-    #global variables
-    global orderCostTotal
-    global fontSize
-    global orderFrame
-    global orderCostTotal
-    global currentSeat
-    global seat_orders
-    
-    if len(seat_orders[currentSeat]) == 0:
+def addToOrder(name, price, sides=None):
+    global orderCostTotal, fontSize, orderFrame, currentSeat, seat_orders
+
+    if currentSeat not in seat_orders:
+        seat_orders[currentSeat] = {}
+
+    entree_num = len(seat_orders[currentSeat]) + 1
+    entree_key = f"Entree {entree_num}"
+
+    seat_orders[currentSeat][entree_key] = {
+        "name": name,
+        "price": price,
+        "sides": sides if sides else {}
+    }
+
+    # Add seat label if first item
+    if len(seat_orders[currentSeat]) == 1:
         seat_label = Label(orderFrame, text=f"{currentSeat}", font=("Arial", fontSize + 2, "bold"))
         seat_label.grid(row=len(orderFrame.winfo_children()), column=0, padx=10, pady=5, sticky="w")
-    #Adding current button item to a list to be proccessed later
-    seat_orders[currentSeat].append({"name": name, "price": price})
-    #Creating label for current button item
-    numSpaces = " " * (100 - (2*len(name)))
-    order_label = Label(orderFrame, text=str(name+numSpaces+"$"+str(price)), cursor="hand2")
+
+    # Display the entree
+    display_name = name + " " * (100 - 2 * len(name)) + "$" + str(price)
+    order_label = Label(orderFrame, text=display_name, cursor="hand2")
     order_label.grid(row=len(orderFrame.winfo_children()), column=0, padx=10, pady=5, sticky="w")
-    # Bind the click event to the created label
     order_label.bind("<Button-1>", ifClicked)
-    #Adding price to total
+
     orderCostTotal += price
+
     
 
 def setCurrentSeat(seat_number):
