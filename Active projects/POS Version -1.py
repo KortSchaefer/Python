@@ -1,3 +1,11 @@
+"""
+Program: POS Version -1.py
+Author: Kort Schaefer 
+Date: 08/03/2025
+Desc: This program is a point of sale system designed for a restaurant. A tutorial is provided in the zip file as tutorial.pdf
+Note: This program is not fully functional and is a work in progress, some features are not implemented yet, and are not ment to work yet.
+"""
+
 from tkinter import *
 from PIL import ImageTk, Image
 
@@ -83,9 +91,42 @@ class POSSystem:
         self.top_frame = LabelFrame(self.root, text="Top Box", relief='raised')
         self.top_frame.grid(column=0, row=0, padx=2, pady=2, columnspan=4)
         
+        # Create a frame to hold logo and buttons horizontally
+        top_content_frame = Frame(self.top_frame)
+        top_content_frame.pack(expand=True, fill='both')
+        
+        # Add logo to the left side
+        try:
+            # Load and resize the logo image
+            logo_image = Image.open("logos_roadhouse_logo.png")
+            
+            # Handle different PIL versions for resizing
+            try:
+                # Try newer PIL version first
+                logo_image = logo_image.resize((150, 80), Image.Resampling.LANCZOS)
+            except AttributeError:
+                try:
+                    # Try older PIL version
+                    logo_image = logo_image.resize((150, 80), Image.ANTIALIAS)
+                except AttributeError:
+                    # Fallback to basic resize
+                    logo_image = logo_image.resize((150, 80))
+            
+            logo_photo = ImageTk.PhotoImage(logo_image)
+            
+            logo_label = Label(top_content_frame, image=logo_photo)
+            logo_label.image = logo_photo  # Keep a reference
+            logo_label.pack(side='left', padx=10, pady=5)
+        except Exception as e:
+            # If image not found or any error, create a text placeholder
+            logo_label = Label(top_content_frame, text="LOGOS\nROADHOUSE", 
+                             font=("Arial", 12, "bold"), fg="red", bg="white")
+            logo_label.pack(side='left', padx=10, pady=5)
+            print(f"Logo loading error: {e}")
+        
         # Create a frame to hold buttons horizontally
-        button_frame = Frame(self.top_frame)
-        button_frame.pack(expand=True, fill='both')
+        button_frame = Frame(top_content_frame)
+        button_frame.pack(side='right', expand=True, fill='both')
         
         # Add exit button to top frame (centered)
         exit_button = Button(button_frame, text="EXIT", command=self.root.quit, 
@@ -625,4 +666,5 @@ class POSSystem:
 # Create and run the application
 if __name__ == "__main__":
     pos_system = POSSystem()
+    pos_system.run()
     pos_system.run()
