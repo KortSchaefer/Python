@@ -1,0 +1,24 @@
+==================================================
+RESTAURANT ORDER RECEIPT
+==================================================
+Date: 2025-08-03 16:37:55
+
+--- TABLE ---
+Coke                                $3.49
+Diet Coke                           $3.49
+Lemonade                            $3.49
+
+--- SEAT1 ---
+Tonic Water                         $3.49
+Tonic Water                         $3.49
+Root Beer                           $3.49
+Mellow Yellow                       $3.49
+Mellow Yellow                       $3.49
+Cheese Fries Meal                  $12.99
+Cheese Fries Meal                  $12.99
+6oz Sirloin                        $24.99
+8oz Sirloin                        $24.99
+
+==================================================
+TOTAL: $103.88
+==================================================
