@@ -205,50 +205,50 @@ execute if score $y wr_y matches 262 run fill -16 262 -16 31 262 31 minecraft:wa
 execute if score $y wr_y matches 263 run fill -16 263 -16 31 263 31 minecraft:water replace air
 execute if score $y wr_y matches 264 run fill -16 264 -16 31 264 31 minecraft:water replace air
 execute if score $y wr_y matches 265 run fill -16 265 -16 31 265 31 minecraft:water replace air
-execute if score $y wr_y matches 266 run fill -16 266 -16 31 266 31 minecraft:water replace air
-execute if score $y wr_y matches 267 run fill -16 267 -16 31 267 31 minecraft:water replace air
-execute if score $y wr_y matches 268 run fill -16 268 -16 31 268 31 minecraft:water replace air
-execute if score $y wr_y matches 269 run fill -16 269 -16 31 269 31 minecraft:water replace air
-execute if score $y wr_y matches 270 run fill -16 270 -16 31 270 31 minecraft:water replace air
-execute if score $y wr_y matches 271 run fill -16 271 -16 31 271 31 minecraft:water replace air
-execute if score $y wr_y matches 272 run fill -16 272 -16 31 272 31 minecraft:water replace air
-execute if score $y wr_y matches 273 run fill -16 273 -16 31 273 31 minecraft:water replace air
-execute if score $y wr_y matches 274 run fill -16 274 -16 31 274 31 minecraft:water replace air
-execute if score $y wr_y matches 275 run fill -16 275 -16 31 275 31 minecraft:water replace air
-execute if score $y wr_y matches 276 run fill -16 276 -16 31 276 31 minecraft:water replace air
-execute if score $y wr_y matches 277 run fill -16 277 -16 31 277 31 minecraft:water replace air
-execute if score $y wr_y matches 278 run fill -16 278 -16 31 278 31 minecraft:water replace air
-execute if score $y wr_y matches 279 run fill -16 279 -16 31 279 31 minecraft:water replace air
-execute if score $y wr_y matches 280 run fill -16 280 -16 31 280 31 minecraft:water replace air
-execute if score $y wr_y matches 281 run fill -16 281 -16 31 281 31 minecraft:water replace air
-execute if score $y wr_y matches 282 run fill -16 282 -16 31 282 31 minecraft:water replace air
-execute if score $y wr_y matches 283 run fill -16 283 -16 31 283 31 minecraft:water replace air
-execute if score $y wr_y matches 284 run fill -16 284 -16 31 284 31 minecraft:water replace air
-execute if score $y wr_y matches 285 run fill -16 285 -16 31 285 31 minecraft:water replace air
-execute if score $y wr_y matches 286 run fill -16 286 -16 31 286 31 minecraft:water replace air
-execute if score $y wr_y matches 287 run fill -16 287 -16 31 287 31 minecraft:water replace air
-execute if score $y wr_y matches 288 run fill -16 288 -16 31 288 31 minecraft:water replace air
-execute if score $y wr_y matches 289 run fill -16 289 -16 31 289 31 minecraft:water replace air
-execute if score $y wr_y matches 290 run fill -16 290 -16 31 290 31 minecraft:water replace air
-execute if score $y wr_y matches 291 run fill -16 291 -16 31 291 31 minecraft:water replace air
-execute if score $y wr_y matches 292 run fill -16 292 -16 31 292 31 minecraft:water replace air
-execute if score $y wr_y matches 293 run fill -16 293 -16 31 293 31 minecraft:water replace air
-execute if score $y wr_y matches 294 run fill -16 294 -16 31 294 31 minecraft:water replace air
-execute if score $y wr_y matches 295 run fill -16 295 -16 31 295 31 minecraft:water replace air
-execute if score $y wr_y matches 296 run fill -16 296 -16 31 296 31 minecraft:water replace air
-execute if score $y wr_y matches 297 run fill -16 297 -16 31 297 31 minecraft:water replace air
-execute if score $y wr_y matches 298 run fill -16 298 -16 31 298 31 minecraft:water replace air
-execute if score $y wr_y matches 299 run fill -16 299 -16 31 299 31 minecraft:water replace air
-execute if score $y wr_y matches 300 run fill -16 300 -16 31 300 31 minecraft:water replace air
-execute if score $y wr_y matches 301 run fill -16 301 -16 31 301 31 minecraft:water replace air
-execute if score $y wr_y matches 302 run fill -16 302 -16 31 302 31 minecraft:water replace air
-execute if score $y wr_y matches 303 run fill -16 303 -16 31 303 31 minecraft:water replace air
-execute if score $y wr_y matches 304 run fill -16 304 -16 31 304 31 minecraft:water replace air
-execute if score $y wr_y matches 305 run fill -16 305 -16 31 305 31 minecraft:water replace air
-execute if score $y wr_y matches 306 run fill -16 306 -16 31 306 31 minecraft:water replace air
-execute if score $y wr_y matches 307 run fill -16 307 -16 31 307 31 minecraft:water replace air
-execute if score $y wr_y matches 308 run fill -16 308 -16 31 308 31 minecraft:water replace air
-execute if score $y wr_y matches 309 run fill -16 309 -16 31 309 31 minecraft:water replace air
+execute if score $y wr_y matches 266 run fill -16 266 -16 31 266 31 minecraft:water
+execute if score $y wr_y matches 267 run fill -16 267 -16 31 267 31 minecraft:water
+execute if score $y wr_y matches 268 run fill -16 268 -16 31 268 31 minecraft:water
+execute if score $y wr_y matches 269 run fill -16 269 -16 31 269 31 minecraft:water
+execute if score $y wr_y matches 270 run fill -16 270 -16 31 270 31 minecraft:water
+execute if score $y wr_y matches 271 run fill -16 271 -16 31 271 31 minecraft:water
+execute if score $y wr_y matches 272 run fill -16 272 -16 31 272 31 minecraft:water
+execute if score $y wr_y matches 273 run fill -16 273 -16 31 273 31 minecraft:water
+execute if score $y wr_y matches 274 run fill -16 274 -16 31 274 31 minecraft:water
+execute if score $y wr_y matches 275 run fill -16 275 -16 31 275 31 minecraft:water
+execute if score $y wr_y matches 276 run fill -16 276 -16 31 276 31 minecraft:water
+execute if score $y wr_y matches 277 run fill -16 277 -16 31 277 31 minecraft:water
+execute if score $y wr_y matches 278 run fill -16 278 -16 31 278 31 minecraft:water
+execute if score $y wr_y matches 279 run fill -16 279 -16 31 279 31 minecraft:water
+execute if score $y wr_y matches 280 run fill -16 280 -16 31 280 31 minecraft:water
+execute if score $y wr_y matches 281 run fill -16 281 -16 31 281 31 minecraft:water
+execute if score $y wr_y matches 282 run fill -16 282 -16 31 282 31 minecraft:water
+execute if score $y wr_y matches 283 run fill -16 283 -16 31 283 31 minecraft:water
+execute if score $y wr_y matches 284 run fill -16 284 -16 31 284 31 minecraft:water
+execute if score $y wr_y matches 285 run fill -16 285 -16 31 285 31 minecraft:water
+execute if score $y wr_y matches 286 run fill -16 286 -16 31 286 31 minecraft:water
+execute if score $y wr_y matches 287 run fill -16 287 -16 31 287 31 minecraft:water
+execute if score $y wr_y matches 288 run fill -16 288 -16 31 288 31 minecraft:water
+execute if score $y wr_y matches 289 run fill -16 289 -16 31 289 31 minecraft:water
+execute if score $y wr_y matches 290 run fill -16 290 -16 31 290 31 minecraft:water
+execute if score $y wr_y matches 291 run fill -16 291 -16 31 291 31 minecraft:water
+execute if score $y wr_y matches 292 run fill -16 292 -16 31 292 31 minecraft:water
+execute if score $y wr_y matches 293 run fill -16 293 -16 31 293 31 minecraft:water
+execute if score $y wr_y matches 294 run fill -16 294 -16 31 294 31 minecraft:water
+execute if score $y wr_y matches 295 run fill -16 295 -16 31 295 31 minecraft:water
+execute if score $y wr_y matches 296 run fill -16 296 -16 31 296 31 minecraft:water
+execute if score $y wr_y matches 297 run fill -16 297 -16 31 297 31 minecraft:water
+execute if score $y wr_y matches 298 run fill -16 298 -16 31 298 31 minecraft:water
+execute if score $y wr_y matches 299 run fill -16 299 -16 31 299 31 minecraft:water
+execute if score $y wr_y matches 300 run fill -16 300 -16 31 300 31 minecraft:water
+execute if score $y wr_y matches 301 run fill -16 301 -16 31 301 31 minecraft:water
+execute if score $y wr_y matches 302 run fill -16 302 -16 31 302 31 minecraft:water
+execute if score $y wr_y matches 303 run fill -16 303 -16 31 303 31 minecraft:water
+execute if score $y wr_y matches 304 run fill -16 304 -16 31 304 31 minecraft:water
+execute if score $y wr_y matches 305 run fill -16 305 -16 31 305 31 minecraft:water
+execute if score $y wr_y matches 306 run fill -16 306 -16 31 306 31 minecraft:water
+execute if score $y wr_y matches 307 run fill -16 307 -16 31 307 31 minecraft:water
+execute if score $y wr_y matches 308 run fill -16 308 -16 31 308 31 minecraft:water
+execute if score $y wr_y matches 309 run fill -16 309 -16 31 309 31 minecraft:water
 
 # Increment raised counter and Y, then update bossbar and messages
 scoreboard players add $raised wr_raised 1
