@@ -1,0 +1,1 @@
+This folder has 2 programs in it. 1 is designed to do a basic RSA encypt/decrypt, and the other emmulates a TLS handshake which is how you use symetric and asymetric encryption together to trasmit data fast and securly. 
