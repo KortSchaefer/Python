@@ -90,25 +90,29 @@ Program Execution Flow
 def simulate_tls_handshake_and_data_transfer():
     # Client Side
     symmetric_key = client_generate_symetric_key() #step 2
-    print("Symmetric Key Generated Successfully:", symmetric_key)
+    print("\nSymmetric Key Generated Successfully:", symmetric_key)
     encrypted_symmetric_key = client_encrypt_symmetric_key(symmetric_key, server_public_key) #step 3
-    print("Symmetric Key Encrypted Successfully: ", encrypted_symmetric_key)
+    print("\nSymmetric Key Encrypted Successfully: ", encrypted_symmetric_key)
 
     # Server Side
     decrypted_symmetric_key = server_decrypt_symmetric_key(encrypted_symmetric_key, server_private_key) #step 4
-    print("Symmetric Key Decrypted Successfully:", decrypted_symmetric_key == symmetric_key)
+    print("\nSymmetric Key Decrypted Successfully:", decrypted_symmetric_key == symmetric_key)
 
     # Data Transfer
-    data_to_send = b"Hello, this is a secret message!" #data to be sent
-    nonce, encrypted_data = encrypt_data(data_to_send, decrypted_symmetric_key) #step 5
-    print("Symetric Data Encrypted Successfully: ", encrypted_data)
+    print("\n--- Data Transfer ---")
+    data_to_send_literal = input("Enter data to send: ") #data to be sent
+    print("----- + ------\n")
+    data_to_send = data_to_send_literal.encode() #encode data to bytes
 
+    nonce, encrypted_data = encrypt_data(data_to_send, decrypted_symmetric_key) #step 5
+    
     # Server decrypts the data
     decrypted_data = decrypt_data(nonce, encrypted_data, decrypted_symmetric_key) #step 6
-    print("Symetric Data Decrypted Successfully")
+    
 
-    print("Original Data:", data_to_send)
-    print("Decrypted Data:", decrypted_data)
+    print("Original Data:", data_to_send, "\n")
+    print("Symetric Data Encrypted Successfully: ", encrypted_data, "\n")
+    print("Decrypted Data:", decrypted_data, "\n")
 
 if __name__ == "__main__":
     simulate_tls_handshake_and_data_transfer()

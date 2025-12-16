@@ -1,0 +1,32 @@
+Example 1
+    - The first reason example #1 is insecure is that it uses SHA-1 as the algorithm, which is no longer secure to brute force attacks.
+    - The second reason example #1 is insecure is that it does not use a salt, making it vulnerable to rainbow table attacks.
+    - The third reason example #1 is that there is no delay between attempts, allowing for rapid brute force attempts. An attacker could run through millions of password combinations in a seconds.
+
+    OWASP TOP 10 References:
+    - A02 - cryptographic failures
+    - A05 - security misconfiguration
+
+Example 2
+    - The first reason example #2 is insecure is that the SQL query uses an f-string with no sanitation, making it vulnerable to SQL injection attacks.
+    - The second reason example #2 is insecure is that it stores passwords in plaintext in the database, making it vulnerable to dictionary attacks.
+    - The third reason example #2 is insecure is that the debug setting is enabled, so anyone can print the entire user database including passwords.
+
+    OWASP TOP 10 References:
+    - A03 - injection
+    - A02 - cryptographic failures
+    - A06 - vulnerable and outdated components
+
+Example 3
+    Leaving a hardcoded API key is risky because even if you commit the code once and delete it later, the key may still be in your version control history.
+    There are many ways an attacker could get access to this hardcoded key, some without the source code itself, so you should never hardcode sensitive information like API keys directly in your code.
+    It's Also hard to rotate this hardcoded key, since you have to find every instance of it in your codebase and change it manually.
+
+    If this repo becomes public, the hardcoded key could be discovered by anyone who views the source code.
+    If someone gets your API key from that, they can make API calls as your company, and steal data or rack up charges. In some cases they could just try to destroy your data.
+
+    To make this code secure, you should use a .env file or a somthing similar that never gets committed to version control, or distrubed with the code.
+    
+    OWASP TOP 10 References:
+    - A02 - cryptographic failures - not because its wrong, but because sensitive data is exposed due to hardcoding.
+    - AO5 - security misconfiguration - Storing API keys in source code is a common security misconfiguration.
